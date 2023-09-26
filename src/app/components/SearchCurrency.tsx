@@ -55,13 +55,19 @@ const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
     <form onSubmit={handleSubmit}>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <DateInput
+          label="Start Date"
           selectedDate={startDate}
           onDateChange={handleStartDateChange}
         />
-        <DateInput selectedDate={endDate} onDateChange={handleEndDateChange} />
+
+        <DateInput
+          label="End Date"
+          selectedDate={endDate}
+          onDateChange={handleEndDateChange}
+        />
 
         <CurrencyInput
-          label="Amount"
+          label="From Currency"
           id="fromCurrency"
           placeholder="Enter amount"
           value={fromCurrency}
@@ -69,7 +75,7 @@ const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
         />
 
         <CurrencyInput
-          label="Amount"
+          label="To Currency"
           id="toCurrency"
           placeholder="Enter amount"
           value={toCurrency}
