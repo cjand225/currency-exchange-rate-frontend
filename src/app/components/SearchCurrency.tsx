@@ -69,7 +69,7 @@ const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
         <CurrencyInput
           label="From Currency"
           id="fromCurrency"
-          placeholder="Enter amount"
+          placeholder="USD"
           value={fromCurrency}
           onChange={handleFromCurrencyChange}
         />
@@ -77,7 +77,7 @@ const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
         <CurrencyInput
           label="To Currency"
           id="toCurrency"
-          placeholder="Enter amount"
+          placeholder="CAD"
           value={toCurrency}
           onChange={handleToCurrencyChange}
         />

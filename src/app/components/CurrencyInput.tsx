@@ -16,7 +16,9 @@ const CurrencyInput = ({
   onChange,
 }: CurrencyInputProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
+    // Convert input value to uppercase and update it
+    const uppercasedValue = event.target.value.toUpperCase();
+    onChange(uppercasedValue);
   };
 
   return (
@@ -31,6 +33,7 @@ const CurrencyInput = ({
         onChange={handleInputChange}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder={placeholder}
+        maxLength={3} // Set the maximum length of input value to 3
         required
       />
     </div>
