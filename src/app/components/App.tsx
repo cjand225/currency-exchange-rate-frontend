@@ -30,7 +30,7 @@ const App = () => {
       })
       .replace(/\//g, "-");
 
-    const apiUrl = `http://localhost:8000/exchange_rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}&startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
+    const apiUrl = `http://localhost:8000/exchange_rates/?from_currency=${fromCurrency}&to_currency=${toCurrency}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`;
 
     setLoading(true);
 
