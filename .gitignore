@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+
+# Production build
+.next/
+out/
+build/
+dist/
+.cache/
+
+# Logs and debugging
+logs/
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# Dependency lock files
+yarn.lock
+package-lock.json
