@@ -1,14 +1,12 @@
-"use client";
 interface ButtonProps {
   children: string;
-  onClick: () => void;
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
+const Button = ({ children }: ButtonProps) => {
   return (
     <button
+      type="submit"
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      onClick={onClick}
     >
       {children}
     </button>
