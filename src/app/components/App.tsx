@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Table from "./Table";
 import SearchCurrency from "./SearchCurrency";
+import { Grid } from "react-loader-spinner";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -58,9 +59,22 @@ const App = () => {
   return (
     <div className="flex flex-col w-full items-center justify-between font-mono text-lg lg:flex">
       <SearchCurrency onSearch={handleSearch} />
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {data && <Table data={data} />}
+      {loading ? (
+        <Grid
+          height="80"
+          width="80"
+          color="#1F2937"
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      ) : error ? (
+        <p>Error: {error}</p>
+      ) : (
+        data && <Table data={data} />
+      )}
     </div>
   );
 };
