@@ -15,6 +15,7 @@ const App = () => {
   ) => {
     // Reset the error
     setError(null);
+    setData(null);
 
     // Format the dates to 'yyyy-mm-dd'
     const formattedStartDate = startDate
