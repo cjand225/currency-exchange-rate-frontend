@@ -1,26 +1,30 @@
-# Docker-related variables
-DOCKER_COMPOSE = docker-compose
-DOCKER_BUILD = $(DOCKER_COMPOSE) build
-DOCKER_RUN = $(DOCKER_COMPOSE) up
-DOCKER_STOP = $(DOCKER_COMPOSE) down
+# Variables
+IMAGE_NAME := currency-exchange-rate-frontend-app
+CONTAINER_NAME := currency-exchange-rate-frontend-container
+PORT := 3000
 
-# Next.js project name
-NEXT_APP_NAME = currency-exchange-rate
-
-# Development environment
-ENV = development
-
-# Makefile targets
-.PHONY: build run stop
-
+# Build the Docker image
 build:
-	@echo "Building Next.js Docker container..."
-	$(DOCKER_BUILD) --build-arg NODE_ENV=$(ENV) $(NEXT_APP_NAME)
+	docker build -t $(IMAGE_NAME) .
 
+# Run the Docker container
 run:
-	@echo "Starting Next.js development server..."
-	$(DOCKER_RUN) $(NEXT_APP_NAME)
+	docker run --name $(CONTAINER_NAME) -p $(PORT):$(PORT) $(IMAGE_NAME)
 
+# Stop the Docker container
 stop:
-	@echo "Stopping Next.js Docker container..."
-	$(DOCKER_STOP)
+	docker stop $(CONTAINER_NAME)
+
+# Remove the Docker container
+clean:
+	docker rm $(CONTAINER_NAME)
+
+# Build and run the Docker container
+up: build run
+
+# Stop and remove the Docker container
+down: stop clean
+
+# View logs from the Docker container
+logs:
+	docker logs $(CONTAINER_NAME)
