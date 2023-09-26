@@ -13,7 +13,7 @@ const Table = ({ data }: TableProps) => {
   return (
     <table className="min-w-max w-full table-auto">
       <thead>
-        <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+        <tr className="bg-gray-800 text-white uppercase text-sm leading-normal">
           <th className="py-3 px-6 text-center">Date</th>
           <th className="py-3 px-6 text-center">Exchange Rate</th>
         </tr>
