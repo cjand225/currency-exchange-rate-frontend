@@ -13,6 +13,9 @@ const App = () => {
     startDate: Date,
     endDate: Date
   ) => {
+    // Reset the error
+    setError(null);
+
     // Format the dates to 'yyyy-mm-dd'
     const formattedStartDate = startDate
       .toLocaleDateString("en-CA", {
