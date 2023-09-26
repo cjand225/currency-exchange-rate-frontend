@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /app
 
 # Copy the rest of the application code into the container
-COPY currency-exchange-rate/ .
+COPY . .
 
 # Install project dependencies
 RUN npm install
