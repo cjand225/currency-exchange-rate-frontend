@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Currency Exchange Rate Web Application (Frontend)
+
+This is the frontend part of the Currency Exchange Rate Web Application built using Next.js.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up and run the Next.js frontend locally.
 
 ```bash
+# Clone the Repository:
+git clone https://github.com/your-username/currency-exchange-rate.git
+cd currency-exchange-rate
+
+# Install Dependencies:
+npm install
+
+# Run the Development Server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open the Application:
+Visit http://localhost:3000 in your web browser to access the application.
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Currency Exchange Rate Web Application allows you to fetch and display currency exchange rates based on specified parameters. Here's how to use the application:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Enter the required parameters:
 
-## Learn More
+   - **From Currency**: Select the source currency (e.g., USD or EUR).
+   - **To Currency**: Select the target currency (e.g., CAD).
+   - **Start Date**: Choose the start date for the exchange rate data (YYYY-MM-DD).
+   - **End Date**: Choose the end date for the exchange rate data (YYYY-MM-DD).
 
-To learn more about Next.js, take a look at the following resources:
+2. Click the "Search" button to retrieve the exchange rate data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. The exchange rate data for the specified date range will be displayed in a user-friendly table format.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Docker Support
 
-## Deploy on Vercel
+If you prefer running the Next.js frontend using Docker, you can utilize the provided Dockerfile and Docker Compose configuration:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Build the Docker Image:
+docker build -t currency-exchange-frontend .
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Run the Docker Container:
+docker run -d -p 3000:3000 currency-exchange-frontend
+
+# Access the Application:
+Visit http://localhost:3000 in your web browser to interact with the application.
+```
+
+## Deployment
+
+For deploying the Next.js frontend in a production environment, you can follow standard deployment practices for Next.js applications. This can include using services like Vercel, Netlify, or hosting the application on your own server.
+
+## Makefile
+
+A Makefile is also provided for convenience. You can use the make commands for building, starting, stopping the containers, and more. View the Makefile for available commands.
+
+```sh
+make <command>
+```
+
+Replace `<command>` with the desired make command from the Makefile.
