@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import Table from "./Table";
 import SearchCurrency from "./SearchCurrency";
 import { Grid } from "react-loader-spinner";
-import { formatDate } from "../common/dates";
+import { formatDate, isValidDateRange } from "../common/dates";
 import ErrorMessage from "./ErrorMessage";
 
+type ExchangeData = {
+  serie_name: string;
+  exchange_rate: { [date: string]: number };
+};
+
 const App = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<ExchangeData | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearch = (
     fromCurrency: string,
@@ -19,6 +24,11 @@ const App = () => {
     // Reset the error
     setError(null);
     setData(null);
+
+    if (!isValidDateRange(startDate, endDate)) {
+      setError("Start date must be before end date.");
+      return; // Return early without making the fetch call
+    }
 
     // Format the dates to 'yyyy-mm-dd'
     const formattedStartDate = formatDate(startDate);
