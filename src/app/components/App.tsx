@@ -3,6 +3,7 @@ import Table from "./Table";
 import SearchCurrency from "./SearchCurrency";
 import { Grid } from "react-loader-spinner";
 import { formatDate } from "../common/dates";
+import ErrorMessage from "./ErrorMessage";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -36,7 +37,9 @@ const App = () => {
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          return response.json().then((errorBody) => {
+            throw new Error(errorBody.error);
+          });
         }
         return response.json();
       })
@@ -45,7 +48,7 @@ const App = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setError(error.toString());
+        setError(error.message);
         setLoading(false);
       });
   };
@@ -65,7 +68,7 @@ const App = () => {
           visible={true}
         />
       ) : error ? (
-        <p>Error: {error}</p>
+        <ErrorMessage message={error} />
       ) : (
         data && <Table data={data} />
       )}
