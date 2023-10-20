@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "./Table";
 import SearchCurrency from "./SearchCurrency";
 import { Grid } from "react-loader-spinner";
+import { formatDate } from "../common/dates";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -19,21 +20,8 @@ const App = () => {
     setData(null);
 
     // Format the dates to 'yyyy-mm-dd'
-    const formattedStartDate = startDate
-      .toLocaleDateString("en-CA", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replace(/\//g, "-");
-
-    const formattedEndDate = endDate
-      .toLocaleDateString("en-CA", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replace(/\//g, "-");
+    const formattedStartDate = formatDate(startDate);
+    const formattedEndDate = formatDate(endDate);
 
     // Determine the base URL based on the environment (development or production)
     const baseUrl =
