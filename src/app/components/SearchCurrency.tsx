@@ -18,7 +18,9 @@ const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
   const [toCurrency, handleToCurrencyChange] = useGenericState<string>("");
 
   // State & handlers for the dates
-  const [startDate, handleStartDateChange] = useGenericState<Date>(new Date());
+  const [startDate, handleStartDateChange] = useGenericState<Date>(
+    new Date(Date.now() - 86400000)
+  );
   const [endDate, handleEndDateChange] = useGenericState<Date>(new Date());
 
   // Handler for form submission
