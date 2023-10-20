@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CurrencyInput from "./CurrencyInput";
 import DateInput from "./DateInput";
 import Button from "./Button";
+import useGenericState from "../hooks/useGenericState";
 
 interface SearchCurrencyProps {
   onSearch: (
@@ -13,37 +14,13 @@ interface SearchCurrencyProps {
 }
 
 const SearchCurrency = ({ onSearch }: SearchCurrencyProps) => {
-  // State for the "From Currency"
-  const [fromCurrency, setFromCurrency] = useState("");
+  // State & handles for currencies
+  const [fromCurrency, handleFromCurrencyChange] = useGenericState<string>("");
+  const [toCurrency, handleToCurrencyChange] = useGenericState<string>("");
 
-  // State for the "To Currency"
-  const [toCurrency, setToCurrency] = useState("");
-
-  // Handler for the "From Currency"
-  const handleFromCurrencyChange = (value: string) => {
-    setFromCurrency(value);
-  };
-
-  // Handler for the "To Currency"
-  const handleToCurrencyChange = (value: string) => {
-    setToCurrency(value);
-  };
-
-  // State for the "Start Date"
-  const [startDate, setStartDate] = useState(new Date());
-
-  // State for the "End Date"
-  const [endDate, setEndDate] = useState(new Date());
-
-  // Handler for the "Start Date"
-  const handleStartDateChange = (date: Date) => {
-    setStartDate(date);
-  };
-
-  // Handler for the "End Date"
-  const handleEndDateChange = (date: Date) => {
-    setEndDate(date);
-  };
+  // State & handlers for the dates
+  const [startDate, handleStartDateChange] = useGenericState<Date>(new Date());
+  const [endDate, handleEndDateChange] = useGenericState<Date>(new Date());
 
   // Handler for form submission
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
