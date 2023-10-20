@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import CurrencyInput from "./CurrencyInput";
 import DateInput from "./DateInput";
 import Button from "./Button";
