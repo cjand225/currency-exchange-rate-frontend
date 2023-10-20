@@ -1,4 +1,5 @@
 import React from "react";
+import { tableStylesLight, tableStylesDark } from "../common/styles";
 
 interface TableProps {
   data: {
@@ -11,24 +12,28 @@ interface TableProps {
 
 const Table = ({ data }: TableProps) => {
   return (
-    <table className="min-w-max w-full table-auto">
-      <thead>
-        <tr className="bg-gray-800 text-white uppercase text-sm leading-normal">
+    <table className="border-collapse text-sm uppercase w-4/6 leading-normal">
+      <thead className={tableStylesLight.header + " " + tableStylesDark.header}>
+        <tr className={tableStylesLight.row + " " + tableStylesDark.row}>
           <th className="py-3 px-6 text-center">Date</th>
           <th className="py-3 px-6 text-center">Exchange Rate</th>
         </tr>
       </thead>
-      <tbody className="text-gray-600 text-sm font-light">
+      <tbody className="text-sm font-light">
         {data &&
           Object.entries(data.exchange_rate).map(([date, rate]) => (
             <tr
               key={date}
-              className="border-b border-gray-200 hover:bg-gray-100"
+              className={tableStylesLight.row + " " + tableStylesDark.row}
             >
-              <td className="py-3 px-6 text-left whitespace-nowrap">
+              <td
+                className={tableStylesLight.data + " " + tableStylesDark.data}
+              >
                 <div className="flex item-center justify-center">{date}</div>
               </td>
-              <td className="py-3 px-6 text-left whitespace-nowrap">
+              <td
+                className={tableStylesLight.data + " " + tableStylesDark.data}
+              >
                 <div className="flex item-center justify-center">{rate}</div>
               </td>
             </tr>

@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  inputStylesLight,
+  inputStylesDark,
+  inputStylesBase,
+} from "../common/styles";
 
 interface CurrencyInputProps {
   label: string;
@@ -23,7 +28,7 @@ const CurrencyInput = ({
 
   return (
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900">
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">
         {label}
       </label>
       <input
@@ -31,7 +36,9 @@ const CurrencyInput = ({
         id={id}
         value={value}
         onChange={handleInputChange}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        className={
+          inputStylesBase + " " + inputStylesLight + " " + inputStylesDark
+        }
         placeholder={placeholder}
         maxLength={3} // Set the maximum length of input value to 3
         required
