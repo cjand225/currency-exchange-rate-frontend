@@ -30,7 +30,19 @@ const App = () => {
         ? "http://localhost:8000"
         : "https://jamesandrews.dev";
 
-    const apiUrl = `${baseUrl}/exchange-api/v1/exchange-rates/?from_currency=${fromCurrency}&to_currency=${toCurrency}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`;
+    // Base API path
+    const apiPath = "/exchange-api/v1/exchange-rates/";
+
+    // Query parameters
+    const queryParams = [
+      `from_currency=${fromCurrency}`,
+      `to_currency=${toCurrency}`,
+      `start_date=${formattedStartDate}`,
+      `end_date=${formattedEndDate}`,
+    ].join("&");
+
+    // Final constructed URL
+    const apiUrl = `${baseUrl}${apiPath}?${queryParams}`;
 
     setLoading(true);
 
